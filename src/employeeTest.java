@@ -1,9 +1,17 @@
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class employeeTest {
     public static void main(String[] args){
+        /* Factory methods can can create instance of same class -> object. But result can be different*/
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+        NumberFormat percentFormatter = NumberFormat.getPercentInstance();
+        double x = 0.1;
+        /* Constructor name is always same as class name. So, we can't have two constructors */
+        /* Key is in inheritance.percentFormatter and currencyFormatter has inheritence in different classes  */
+        System.out.println(percentFormatter.format(x)); // prints $0.10 System.out.println(percentFormatter.format(x)); // prints 10%
         Employee [] staff = new Employee[3];
         staff[0] = new Employee("Carl Cracker", 5000, 1997, 7, 17);
         staff[1] = new Employee("Yarl Bracker", 6000, 1998, 8, 18);
@@ -16,7 +24,8 @@ public class employeeTest {
             System.out.println("name=" + e.getName()
             + ",salary=" + e.getSalary()
             + ",hireDay=" + e.getHireDay()
-            +", id=" + e.getId());
+            +", id=" + e.getId()
+            +", nextId=" + Employee.getNextId());
         }
     }
 }
@@ -42,9 +51,9 @@ class Employee{
         this.id = Employee.nextId;
         Employee.nextId += 1;
     }
-
+    /* static method don't operate on object. they don't have "this" parameter in them*/
     public static int getNextId() {
-        return nextId;
+        return nextId; // return static field
     }
 
     public static void setNextId(int nextId) {
@@ -71,3 +80,8 @@ class Employee{
         this.salary += raise;
     }
 }
+
+/* native method can bypass java language rules. For example, setOut in System.out println can change the instance
+* fields with word final */
+
+
