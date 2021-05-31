@@ -79,6 +79,49 @@ class Employee{
         double raise = this.salary * byPercent / 100;
         this.salary += raise;
     }
+    /* Every class can have a void main method as for the purpose of the unit testing*/
+    /* Main method will be never executed */
+
+    public static void main(String[] args){
+        var e = new Employee("Romeo", 50000, 2003, 3, 31);
+        e.raiseSalary(10);
+        System.out.println(e.getName() + " " + e.getSalary());
+        /*Methods can't attach new objects to parameters*/
+        callByValue();
+        /* Methods can change state of object*/
+        System.out.println("Salary before changeStateOfObject=" + e.getSalary());
+        changeStateOfObject(e);
+        System.out.println("Salary after changeStateOfObject=" + e.getSalary());
+
+        /* Method can't modify numeric parameters*/
+        System.out.println("Testing tripleValue:");
+        double percent = 10;
+        System.out.println("Before: percent=" + percent);
+        tripleValue(percent);
+        System.out.println("After: percent=" + percent);
+    }
+    /* swap and callByValue demonstrates that in java we can only get call by value.
+    *  swap method creates copy of references to object and in side swap they swap
+    *  But outside the swap x an y are abandoned. Which means that -> object references are passed by value */
+    public static void swap(Employee x , Employee y){
+      Employee temp = x;
+      x = y;
+      y = temp;
+      System.out.println(x.getName());
+    }
+    public static void callByValue(){
+        var x = new Employee("Alice", 50000, 2003, 3, 31);
+        var y = new Employee("Bob", 50000, 2003, 3, 31);
+        swap(x, y);
+        System.out.println(x.getName());
+    }
+    public static void changeStateOfObject(Employee e){
+        e.raiseSalary(200);
+    }
+    public static void tripleValue(double x){
+        x = 3 * x;
+        System.out.println("End of method: x=" + x);
+    }
 }
 
 /* native method can bypass java language rules. For example, setOut in System.out println can change the instance
