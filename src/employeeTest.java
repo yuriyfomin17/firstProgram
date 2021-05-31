@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 public class employeeTest {
@@ -14,7 +15,8 @@ public class employeeTest {
         for(Employee e : staff){
             System.out.println("name=" + e.getName()
             + ",salary=" + e.getSalary()
-            + ",hireDay=" + e.getHireDay());
+            + ",hireDay=" + e.getHireDay()
+            +", id=" + e.getId());
         }
     }
 }
@@ -24,25 +26,45 @@ class Employee{
     private final String name;
     private double salary;
     private final LocalDate hireDay;
+    private final Integer id;
+    /* say there are 1000 objects of Employee type class. But each of them has nextId = 1*/
+    private static int nextId = 1;
+
     /* Constructor has same name as the Class */
     /* Constructor needs new with it as it works on the heap*/
     /* Constructor can have 0, 1, or more parameters*/
     /* Class can have more then one constructor*/
     public Employee(String n, double s, int year, int month, int day){
         /* Don't put the variable name e.g. String name = n as it overshadows private fina String name*/
-        name = Objects.requireNonNull(n, "unknown");
-        salary = s;
-        hireDay = LocalDate.of(year, month, day);
+        this.name = Objects.requireNonNull(n, "unknown");
+        this.salary = s;
+        this.hireDay = LocalDate.of(year, month, day);
+        this.id = Employee.nextId;
+        Employee.nextId += 1;
     }
+
+    public static int getNextId() {
+        return nextId;
+    }
+
+    public static void setNextId(int nextId) {
+        Employee.nextId = nextId;
+    }
+
     /* public means anybody can call those methods from anywhere*/
+    /* Clear example of encapsulation. Field accessors methods which return values of instance fields*/
+    /* Rule of thumb is to use clone when giving mutable field. As mitigate the concept of encapsulation*/
+    public Integer getId() {
+        return this.id;
+    }
     public String getName(){
-        return name;
+        return this.name;
     }
     public double getSalary(){
-        return salary;
+        return this.salary;
     }
     public LocalDate getHireDay(){
-        return hireDay;
+        return this.hireDay;
     }
     public void raiseSalary(double byPercent){
         double raise = this.salary * byPercent / 100;
