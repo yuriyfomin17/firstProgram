@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class employeeTest {
     public static void main(String[] args){
@@ -24,8 +25,12 @@ class Employee{
     private double salary;
     private final LocalDate hireDay;
     /* Constructor has same name as the Class */
+    /* Constructor needs new with it as it works on the heap*/
+    /* Constructor can have 0, 1, or more parameters*/
+    /* Class can have more then one constructor*/
     public Employee(String n, double s, int year, int month, int day){
-        name = n;
+        /* Don't put the variable name e.g. String name = n as it overshadows private fina String name*/
+        name = Objects.requireNonNull(n, "unknown");
         salary = s;
         hireDay = LocalDate.of(year, month, day);
     }
@@ -40,7 +45,7 @@ class Employee{
         return hireDay;
     }
     public void raiseSalary(double byPercent){
-        double raise = salary * byPercent / 100;
-        salary += raise;
+        double raise = this.salary * byPercent / 100;
+        this.salary += raise;
     }
 }
