@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Random;
 
 public class Overloading {
@@ -15,7 +13,7 @@ public class Overloading {
 
 class Employee2{
     public static int nextId;
-    String name = "Bohdan";
+    String name;
     /* this is the other option to initialize the nextId
     * if it requires complex way to do it*/
     static
