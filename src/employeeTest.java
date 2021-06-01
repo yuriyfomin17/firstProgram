@@ -37,7 +37,7 @@ class Employee{
     private final LocalDate hireDay;
     private final Integer id;
     /* say there are 1000 objects of Employee type class. But each of them has nextId = 1*/
-    private static int nextId = 1;
+    private static int nextId;
 
     /* Constructor has same name as the Class */
     /* Constructor needs new with it as it works on the heap*/
