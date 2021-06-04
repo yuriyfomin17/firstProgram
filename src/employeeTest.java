@@ -32,20 +32,21 @@ public class employeeTest {
 
 class Employee{
     /*instance fields*/
-    private final String name;
+    private  String name;
     private double salary;
-    private final LocalDate hireDay;
-    private final Integer id;
+    private  LocalDate hireDay;
+    private  Integer id;
     /* say there are 1000 objects of Employee type class. But each of them has nextId = 1*/
     private static int nextId;
+
 
     /* Constructor has same name as the Class */
     /* Constructor needs new with it as it works on the heap*/
     /* Constructor can have 0, 1, or more parameters*/
     /* Class can have more then one constructor*/
-    public Employee(String n, double s, int year, int month, int day){
+    public Employee(String aName, double s, int year, int month, int day){
         /* Don't put the variable name e.g. String name = n as it overshadows private fina String name*/
-        this.name = Objects.requireNonNull(n, "unknown");
+        this.name = aName;
         this.salary = s;
         this.hireDay = LocalDate.of(year, month, day);
         this.id = Employee.nextId;
@@ -127,4 +128,48 @@ class Employee{
 /* native method can bypass java language rules. For example, setOut in System.out println can change the instance
 * fields with word final */
 
+class Manager extends Employee{
+    private double bonus;
+    /*
+    * @param name
+    * */
+    public Manager(String aName, double aSalary, int aYear, int aMonth, int aDay){
+        super(aName, aSalary, aYear, aMonth, aDay);
+    }
+    public void setBonus(double aBonus){
+        this.bonus = aBonus;
+    }
+    /* overriding method. as method getSalary() exists in Employee */
+    public double getSalary(){
+        double baseSalary = super.getSalary();
+        return bonus + baseSalary;
+    }
+    public static void main(String[] args){
 
+        var manger = new Manager("Yuriy Fomin", 5300, 1997, 9, 17);
+        manger.setBonus(5000);
+        System.out.println("Manager salary = " + manger.getSalary());
+        var staff = new Employee[3];
+        staff[0] = manger;
+        /* Won't work since not every employee is a manager*/
+//        staff[0].setBonus(1000);
+
+        staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
+        staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
+        /* the fact that e can refer to multiple object variable such as manager and employer
+        *  is called polymorphism. Automatically selecting appropriate method is called
+        * dynamic binding*/
+        for (Employee e: staff){
+            System.out.println(e.getName() + " " + e.getSalary());
+        }
+    }
+
+}
+/* word final doesn't allow any other class to extend from Executive
+* word final also doesn't allow to override methods*/
+final class Executive extends Manager{
+
+    public Executive(String aName, double aSalary, int aYear, int aMonth, int aDay) {
+        super(aName, aSalary, aYear, aMonth, aDay);
+    }
+}

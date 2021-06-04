@@ -1,7 +1,6 @@
 package com.yuriy.overloading;
 import java.util.Random;
 /* with packages classes with same name are not a problem*/
-
 public class Overloading {
     public static void main(String[] args) {
         /* in package word public and private allows
