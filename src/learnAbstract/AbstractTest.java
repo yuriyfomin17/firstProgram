@@ -121,3 +121,10 @@ class Student extends Person{
         return "Student name is " + super.getName() + " and his major is " + getMajor();
     }
 }
+
+/* Summary of access modifiers
+* 1. Public - accessible by the world
+* 2. Private - accessible by the class only
+* 3. Protected - is accessible by the package and
+*  all subclasses
+* 4. No modifiers are needed- accessible in the package and no modifiers are needed */
