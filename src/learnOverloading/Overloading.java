@@ -1,4 +1,4 @@
-package com.yuriy.overloading;
+package learnOverloading;
 import java.util.Random;
 /* with packages classes with same name are not a problem*/
 public class Overloading {

@@ -1,7 +1,6 @@
+package learnInheritence;
 import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Objects;
 
 public class employeeTest {
     public static void main(String[] args){
@@ -30,9 +29,9 @@ public class employeeTest {
     }
 }
 
-class Employee{
+class Employee {
     /*instance fields*/
-    private  String name;
+    private final String name;
     private double salary;
     private  LocalDate hireDay;
     private  Integer id;
@@ -44,13 +43,16 @@ class Employee{
     /* Constructor needs new with it as it works on the heap*/
     /* Constructor can have 0, 1, or more parameters*/
     /* Class can have more then one constructor*/
-    public Employee(String aName, double s, int year, int month, int day){
+    public Employee(String aName, double aSalary, int aYear, int aMonth, int aDay){
         /* Don't put the variable name e.g. String name = n as it overshadows private fina String name*/
         this.name = aName;
-        this.salary = s;
-        this.hireDay = LocalDate.of(year, month, day);
+        this.salary = aSalary;
+        this.hireDay = LocalDate.of(aYear, aMonth, aDay);
         this.id = Employee.nextId;
         Employee.nextId += 1;
+    }
+    public String getName(){
+        return this.name;
     }
     /* static method don't operate on object. they don't have "this" parameter in them*/
     public static int getNextId() {
@@ -66,9 +68,6 @@ class Employee{
     /* Rule of thumb is to use clone when giving mutable field. As mitigate the concept of encapsulation*/
     public Integer getId() {
         return this.id;
-    }
-    public String getName(){
-        return this.name;
     }
     public double getSalary(){
         return this.salary;
@@ -147,6 +146,12 @@ class Manager extends Employee{
     public static void main(String[] args){
 
         var manger = new Manager("Yuriy Fomin", 5300, 1997, 9, 17);
+        /* use of instanceof to check before
+         casting so no exception will be thrown */
+        if (manger instanceof Employee){
+            var employee = (Employee) manger;
+            System.out.println("It worked" +  employee.getName());
+        }
         manger.setBonus(5000);
         System.out.println("Manager salary = " + manger.getSalary());
         var staff = new Employee[3];
