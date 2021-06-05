@@ -71,7 +71,7 @@ class Employee extends Person {
     }
     /* When we override com.yuriy.abstract method getDescription
     * class Employee is no longer abstract*/
-    public String getDescription(){
+    @Override public String getDescription(){
         return "Employee name is " + super.getName()+ " and last name is "+ super.getLastName() + " and his salary is " + getSalary();
     }
     public String getName(){

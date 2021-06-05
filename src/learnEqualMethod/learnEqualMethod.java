@@ -28,7 +28,7 @@ class Employee{
         aPercent = aPercent / 100 + 1;
         this.salary = Math.round(this.salary * aPercent);
     }
-    public boolean equals(Object otherObject){
+   @Override public boolean equals(Object otherObject){
 
         // quick test to see if the objects are identical
         if(this == otherObject) return true;
