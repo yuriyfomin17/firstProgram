@@ -25,6 +25,8 @@ abstract class Person{
     * with private filed will be accessible*/
     private static final int nextId;
     private String name;
+    /* Subclasses of Person such as Employee and
+    * Student can access the lastName*/
     protected String lastName;
     static {
         nextId = (int) Math.round(Math.random() * 100);
