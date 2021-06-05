@@ -1,12 +1,16 @@
 package learnAbstract;
 
 import java.time.LocalDate;
-
 public class AbstractTest {
     public static void main(String [] args){
         var people = new Person[2];
         people[0] = new Employee("Yuriy Fomin", 330000, 1997, 9, 17);
         people[1] = new Student("Yuriy", "Computer Science");
+        var employee = people[0];
+        /* Because we have put protected against lastName
+        *  thus we can access lastName field directly
+        * not good in terms of encapsulation*/
+        employee.lastName = "Bohdan";
         for(Person p : people){
             System.out.println(p.getDescription());
         }
@@ -19,10 +23,15 @@ public class AbstractTest {
 abstract class Person{
     /* anything tagged as private won't be accessible in other class. But public method
     * with private filed will be accessible*/
-
+    private static final int nextId;
     private String name;
+    protected String lastName;
+    static {
+        nextId = (int) Math.round(Math.random() * 100);
+    }
     {
         this.name = "Unknown";
+        this.lastName = "Unknown";
     }
     public Person(){}
     public Person(String name){
@@ -31,9 +40,12 @@ abstract class Person{
     public String getName(){
         return this.name;
     }
+    public String getLastName(){return this.lastName;}
     /* if to remove this com.yuriy.abstract method getDescription
     * We would not be able to use getDescription method*/
     public abstract String getDescription();
+    /* This private method won't accessible by the subclass Person */
+    private Integer getNextId(){ return Person.nextId;}
 }
 
 class Employee extends Person {
@@ -56,9 +68,9 @@ class Employee extends Person {
         this.hireDay = LocalDate.of(aYear, aMonth, aDay);
     }
     /* When we override com.yuriy.abstract method getDescription
-    * class Employee is no longer com.yuriy.abstract*/
+    * class Employee is no longer abstract*/
     public String getDescription(){
-        return "Employee name is " + super.getName() + " and his salary is " + getSalary();
+        return "Employee name is " + super.getName()+ " and last name is "+ super.getLastName() + " and his salary is " + getSalary();
     }
     public String getName(){
         return super.getName();
@@ -101,8 +113,8 @@ class Student extends Person{
     public String getMajor(){
         return this.major;
     }
-    /* When we override com.yuriy.abstract method getDescription
-     * class Student is no longer com.yuriy.abstract*/
+    /* When we override abstract method getDescription
+     * class Student is no longer abstract*/
     public String getDescription(){
         return "Student name is " + super.getName() + " and his major is " + getMajor();
     }
