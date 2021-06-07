@@ -52,6 +52,28 @@ public class learnArray {
         Employee e = staff.get(staff.size() - 1);
         System.out.println(e.getName());
 
+        var intList = new ArrayList<Integer>();
+        /* Object wrappers and autoboxing
+        *  new ArrayList<Integer>() is less efficient then an int[]
+        *  because each value is separately wrapped inside an object
+        * Only use for small collections when programmer convinience is more
+        * important than efficiency
+        *
+        * new ArrayList<Integer>() -> list.add(3)-> list.add(Integer.valueOf(3))
+        * n = list.get(i)  = list.get(i).intValue()
+        * which of course takes more time. This is called autoboxing  */
+
+        /* Hence, following notation will fail
+        * since two classes can't be equal.
+        * Those classes are called wrappers which are Integer, Long, Float, Double, Short, Byte
+        * Character and Boolean -> first six inherit from superclass Number and their value can not be changed
+        * since they are final*/
+        Integer a = 1000;
+        Integer b = 1000;
+        if(a == b){
+            System.out.println("true");
+        }
+
 
     }
 }
