@@ -1,3 +1,5 @@
+package sumOfLearning;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -72,7 +74,7 @@ class Employee{
         /* if the classes don't match, they can't be equal*/
         if(getClass()!= otherObject.getClass()) return false;
 
-        /* now we know otherObject is a non-null Employee*/
+        /* now we know otherObject is a non-null sumOfLearning.Employee*/
         var other = (Employee) otherObject;
 
         /* test whether the field have identical values*/
