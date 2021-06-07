@@ -100,8 +100,8 @@ public class learnArray {
         System.out.println(m);
 
         /* The constructor of the enumerator is always private
-        Size size = Enum.valueOf(Size.class, "SMALL");
         /* Note that in println method toString is called automatically*/
+        Size size = Enum.valueOf(Size.class, "SMALL");
         System.out.println(size);
         if(size == Size.LARGE){
             System.out.println("Good Job");
