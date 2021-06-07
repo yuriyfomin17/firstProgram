@@ -1,9 +1,14 @@
+package learnArrayWrappers;
+
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class learnArray {
     public static void main(String[] args){
+
         var e1 = new Employee("Alice Adams", 75000, 1987, 12, 15);
         var e2= new Employee("Alice Adams",75000, 1987, 12, 15 );
         var e3 = new Employee("Bob Brandson", 50000, 1989, 10, 1);
@@ -24,7 +29,7 @@ public class learnArray {
         System.out.println("size = " + staff2.size());
         var staff3 = new ArrayList<>(100);
         var staff4 = new Employee[100];
-        /* Note that new ArrayList<>(100) is not the same as new Employee[100]
+        /* Note that new ArrayList<>(100) is not the same as new learnArray.Employee[100]
          * An array with the capacity of 100 has the potential of holding 100 elements
          * but at the begging it has no elements at all */
 
@@ -37,7 +42,7 @@ public class learnArray {
         * Capacity is 100, size is 0.
         * wrong notations as no elements
         */
-//        var list = new ArrayList<Employee>(100); // capacity 100, size is 0
+//        var list = new ArrayList<learnArray.Employee>(100); // capacity 100, size is 0
 //        list.set(0, x) is w
 
 
@@ -70,15 +75,50 @@ public class learnArray {
         * since they are final*/
         Integer a = 1000;
         Integer b = 1000;
+
+        char c = 500;
         if(a == b){
-            System.out.println("true");
+            var index = "true";
+            var code = index.charAt(0);
+            System.out.println(index);
         }
+        ArrayList<Integer> integers = new ArrayList<>(1);
+        integers.add(a);
+        integers.trimToSize();
 
+        /* Integer value is unboxed and promoted to double*/
+        Integer n1 = 1;
+        Double x = 2.0;
+        System.out.println(true ? n1 : x); // prints 1.0
 
+        /* To sum up boxing and unboxing is courtesy of compiler
+        * not the virtual machine. The compiler insets the necessary
+        * calls when it generates the bytecodes of the class
+        * Virtual Machine just executes this bytecode */
+
+        double m = max(3.1, 40.4, -5);
+        System.out.println(m);
+
+        /* The constructor of the enumerator is always private
+        Size size = Enum.valueOf(Size.class, "SMALL");
+        /* Note that in println method toString is called automatically*/
+        System.out.println(size);
+        if(size == Size.LARGE){
+            System.out.println("Good Job");
+        }
+        Size[] values = Size.values();
+        System.out.println();
+    }
+    /*
+    * ... is called an ellipsis which means that
+    * java code can receive any number of parameters */
+    public static double max(double... values) {
+        double largest = Double.NEGATIVE_INFINITY;
+        for (double v : values) if (v > largest) largest = v; return largest;
     }
 }
 
-
+enum Size { SMALL, MEDIUM, LARGE, EXTRA_LARGE }
 class Employee{
     private  String name;
     private double salary;
