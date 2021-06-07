@@ -1,11 +1,13 @@
+package learnHashCode;
+
 import java.util.Objects;
 
 public class learnHashCode {
     public static void main(String[] args){
-        String word = "Hellor";
+        String word = "\uD83D\uDE00";
         byte val  = 108 & 0xff;
         System.out.println();
-        var index = word.charAt(word.length() - 1);
+        var index = word.codePointAt(word.length() - 1);
         /* String method uses following algorithm to compute
         * hashcode of the string*/
         int hash = 0;
@@ -29,6 +31,7 @@ public class learnHashCode {
 
         var e = new Employee("Yuriy", 23);
         System.out.println(e.getHashCode());
+        System.out.println(e.getHashCode2());
     }
 }
 
@@ -50,4 +53,8 @@ class Employee{
     public Integer getHashCode() {
         return hashCode;
     }
+    public Integer getHashCode2() {
+        return hashCode2;
+    }
+
 }
