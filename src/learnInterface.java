@@ -1,6 +1,9 @@
 public class learnInterface {
     public static void main(String [] args){
         Employee x = new Employee("Yuriy", 5000);
+        Manger m = new Manger("Bohdan", 6000, 100000.0);
+        System.out.println(m.getName());
+        System.out.println(m.getAge());
         System.out.println(x.returnNameSalary());
         if(x instanceof Comparable){
             System.out.println("true");
@@ -17,19 +20,41 @@ public class learnInterface {
 * but it is not necessary to describe them like this*/
 
 interface Comparable{
-    int compareTo(Object other);
+    /* word default supply default method for the class
+    * hence any class that implements Comparable interface
+    * returns zero
+    *
+    * really useful for the case of the old classes
+    * say class use new interface with no default method and this class doesn't
+    * this method –> results in error while default can mitigate such circumstances */
+    default int compareTo(Object other){
+        return 0;
+    }
 }
 interface Info {
     String returnNameSalary(); /* public methods */
     double MAX_SIZE = 20; /* public static final*/
+
+    /* Note that interface implements same method getName() for Manager class
+    *  But same method is defined in superclass Employee. Java solves this conflict by simply using method
+    *  from super class
+    *
+    * However, if interface supplies same method (default or not) with the same parameters
+    *  then conflict must be resolved by overriding those methods  */
+    default String getName(){ return "Yuriy";}
+
+    default int getAge(){return 24;}
 }
 /* Employee implements Info, Comparable interface
 * use comma to make class to implement them both
 *
 * Why can't we use an abstract class instead
 * Answer is that each class can only extend single class
-* Say Employee ealready extends Person class. Hence, it can't extend
-* another class*/
+* Say Employee already extends Person class. Hence, it can't extend
+* another class
+* Designers of Java decided not to use multiple inheritence like in C as
+* it makes language too complex. Hence interfaces is the key solution to multiple inheritence
+* which complement C++ functionality */
 class Employee implements Info, Comparable{
     private final String name;
     private Integer salary;
@@ -79,3 +104,26 @@ class Employee implements Info, Comparable{
         return "Name=" + this.name + " salary " + this.salary;
     }
 }
+
+class Manger extends Employee implements Info, Comparable{
+    private final double bonus;
+
+    public Manger(String aName, Integer aSalary, Double aBonus) {
+        super(aName, aSalary);
+        this.bonus = aBonus;
+    }
+
+    @Override public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    public int getAge() {
+        /* Here the conflict is resolved by programmer. I choose to use method of Info interface*/
+        return Info.super.getAge();
+    }
+}
+/* CAUTION!!!!!!!
+BE CAREFUL WHEN USING INTERFACE WITH THE SAME NAME AS IN SUPERCLASS OBJECT
+DUE TO CLASS WINS RULE METHODS SUCH AS toString and equals in Object would always win
+* */
