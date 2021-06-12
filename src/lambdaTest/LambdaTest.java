@@ -26,7 +26,7 @@ public class LambdaTest {
         * instead you have to construct an instance of worker class that implements some interface Comparator (i.e.)
         * it has a method that is going to be used by the object to carry out some work e.g. sorting
         *
-        * You never specify the result type of the lambda expression
+        * You never specify the result type of the lambda expression. It is deduced from the context
         * */
         Arrays.sort(planets, (first, second) -> first.length() - second.length());
         /*
