@@ -2,6 +2,7 @@ package learnCallBack;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Array;
 import java.time.*;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -31,7 +32,7 @@ interface ActionListener{
     void actionPerformed(ActionEvent event);
 }
 
-class TimePrinter implements ActionListener, java.awt.event.ActionListener {
+class TimePrinter implements java.awt.event.ActionListener {
     public void actionPerformed(ActionEvent event){
         System.out.println("Ath the tone, the time is "
         + Instant.ofEpochMilli(event.getWhen()));
