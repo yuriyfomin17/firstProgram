@@ -16,7 +16,7 @@ public class learnMethodReference {
         System.out.println(Arrays.toString(list));
 
         System.out.println();
-        /*
+       /*
         * The expression System.out::println is a method reference
         * It directs the compiler to produce an instance of a functional interface
         * overriding the single abstract method of the interface to call a given method

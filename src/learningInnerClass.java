@@ -98,7 +98,7 @@ class TalkingClock{
     * as a local of the run method
     *
     * 1. The run method is called
-    * 2. The object variable listner is initialized by a call to the constructor of the inner
+    * 2. The object variable listener is initialized by a call to the constructor of the inner
     * class TimePrinter
     * 3. The listener reference is passed to the Timer constructor, the timeis is started
     * and method run is exited. Beep parameter variable is no longer exists. However,
@@ -123,6 +123,19 @@ class TalkingClock{
         timer.start();
 
     }
+    /* This is an example of the anonymous inner classes
+    * Syntax is a bit cryptic but it means: create new object of a class
+    * that implements the ActionListener interface, where the required method actionPerformed is the one
+    * defined inside the braces
+    * */
+    public void start(int interval, boolean beep) {
+        var listener = new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                System.out.println("At the tone, the time is " + Instant.ofEpochMilli(event.getWhen()));
+                if (beep) Toolkit.getDefaultToolkit().beep(); }
+        };
+        var timer = new Timer(interval, listener);
+        timer.start(); }
     public static void main(String[] args){
         var clock = new TalkingClock(1000, true);
         clock.run(1000, true);

@@ -16,9 +16,9 @@ public class AbstractTest {
         }
     }
 }
-/* when extending com.yuriy.abstract class Person there are two
+/* when extending abstract class Person there are two
 * choices. All of the methods should be defined
-* then subclass is no longer com.yuriy.abstract
+* then subclass is no longer abstract
 * or some methods can be undefined and subclass is also com.yuriy.abstract*/
 abstract class Person{
     /* anything tagged as private won't be accessible in other class. But public method
