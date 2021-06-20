@@ -1,3 +1,5 @@
+package learningInnerClass;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +8,10 @@ import javax.swing.*;
 
 public class learningInnerClass {
     public static void main(String[] args){
+        /* This is how instance of inner class of TalkingClock is created with the double brackets
+        *  Inner class can not have an constructors but inside the brackets we can provide
+        * an initialization*/
+        var clock2 = new TalkingClock(1000, false){};
         var clock = new TalkingClock(1000, false);
         clock.start();
         // keep program running until the user selects "OK"
@@ -136,9 +142,19 @@ class TalkingClock{
         };
         var timer = new Timer(interval, listener);
         timer.start(); }
+    /*
+    * Example of the anonymous inner class but with the lambda expression
+    * Reminder: behind the scene of lambda expression the object of the class that implements ActionPerformed interface
+    * is created. And it has the method that is going to be used in this class
+    * */
+    public void start2(int interval, boolean beep) {
+        var timer = new Timer(interval, event -> { System.out.println("At the tone, the time is "
+                + Instant.ofEpochMilli(event.getWhen())); if (beep) Toolkit.getDefaultToolkit().beep();
+        });
+        timer.start(); }
     public static void main(String[] args){
         var clock = new TalkingClock(1000, true);
-        clock.run(1000, true);
+        clock.start2(1000, true);
         // keep program running until the user selects "OK"
         JOptionPane.showMessageDialog(null, "Quit program?");
         System.exit(0);
