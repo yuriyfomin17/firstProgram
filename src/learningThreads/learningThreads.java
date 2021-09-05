@@ -7,7 +7,10 @@ public class learningThreads {
 
             Bank bank = new Bank(4, 100000);
             final int  STEPS = 100;
-            final double MAX_AMOUNT = 1000;
+            // With MAX_AMOUNT set to 1000 there is a small chance that we will enter the deadlock because
+            // at least one account will have 1000  to transfer to next account
+//            final double MAX_AMOUNT = 1000;
+            final double MAX_AMOUNT = 50000;
             final int DELAY = 10;
 
 //           You can create the instance of class that implements Runnable interaface via anonymous class
@@ -43,9 +46,11 @@ public class learningThreads {
             };
             Thread thread1 = new Thread(task1);
             Thread thread2 = new Thread(task2);
-            System.out.println(thread1.getState());
+            thread1.setName("BankThread1");
+            thread2.setName("BankThread2");
+//            System.out.println(thread1.getState());
             thread1.start();
-            System.out.println(thread1.getState());
+//            System.out.println(thread1.getState());
             thread2.start();
         }
     }
