@@ -58,6 +58,21 @@ class Clock implements Runnable
         System.out.println(after.getTime() - before.getTime());
 
     }
-
-
 }
+
+//Ever since version 1.0 of Java  every object has an intrinsic lock. If method is declared with synchronized word, the object intrinsic lock protects the
+// entire method. For example,
+//
+//    public synchronized void method() {
+//        method body
+//    }
+
+//    public  void method() {
+//        this.intrinsicLock.lock
+//        try{
+//             method body
+//            }
+//        finally{
+//         this.intrinsicLock.unlock
+//        }
+//    }

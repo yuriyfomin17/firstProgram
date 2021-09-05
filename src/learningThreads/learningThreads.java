@@ -16,8 +16,9 @@ public class learningThreads {
                 public void run() {
                     try{
                         for (int i = 0; i < STEPS; i++) {
+                            System.out.println(i);
                             double amount = MAX_AMOUNT * Math.random();
-                            bank.transfer(0, 1, amount);
+                            bank.transfer2(0, 1, amount);
                             Thread.sleep((int) (DELAY * Math.random()));
                         }
                     } catch (Exception e){
@@ -30,8 +31,9 @@ public class learningThreads {
             Runnable task2 = ()-> {
                 try {
                     for (int i = 0; i < STEPS; i++) {
+                        System.out.println(i);
                         double amount = MAX_AMOUNT * Math.random();
-                        bank.transfer(2, 3, amount);
+                        bank.transfer2(2, 3, amount);
                         Thread.sleep((int) (DELAY * Math.random()));
                     }
                 } catch (Exception e){
