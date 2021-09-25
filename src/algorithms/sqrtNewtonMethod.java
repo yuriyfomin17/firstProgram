@@ -2,7 +2,7 @@ package algorithms;
 
 public class sqrtNewtonMethod {
     public static void main(String[] args) {
-        System.out.println(newtonianSquare(4));
+        System.out.println(newtonianSquare(5));
     }
     public static double newtonianSquare(double num){
         double err = 1e-15;
