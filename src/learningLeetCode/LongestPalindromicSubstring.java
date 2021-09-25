@@ -40,7 +40,8 @@ class Solution {
             }
         }
         return aPalindrome;
-    };
+    }
+
     /* Time Complexity is O(n^2)
     *  Space complexity is O(1)*/
     static public String longestPalindrome2(String s) {

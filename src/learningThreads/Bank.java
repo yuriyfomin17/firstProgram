@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 class Bank {
 
     private final double[] accounts;
-    private Lock bankLock = new ReentrantLock();
+    private final Lock bankLock = new ReentrantLock();
     /**
      * Constructs the bank.
      * @param n the number of accounts

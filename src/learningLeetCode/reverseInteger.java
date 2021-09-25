@@ -7,10 +7,7 @@ public class reverseInteger {
     static public int reverse(int x) {
         String integer = Integer.toString(x);
         String result = "";
-        boolean negative = false;
-        if (x < 0){
-            negative = true;
-        }
+        boolean negative = x < 0;
         for (int i = integer.length() -1; i>=0 ; i--) {
             if (!String.valueOf(integer.charAt(i)).equals("-") ){
                 result += integer.charAt(i);

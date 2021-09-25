@@ -40,7 +40,7 @@ public class learningInnerClass {
 * And answer is no.
 * */
 class TimePrinter2 implements ActionListener{
-    private TalkingClock outer;
+    private final TalkingClock outer;
     public TimePrinter2(TalkingClock anOuter){
         this.outer = anOuter;
     }

@@ -65,7 +65,7 @@ public class LambdaTest {
         * not the ActionListener Instance
         * */
         ActionListener listener = event ->{
-            System.out.println(this.toString());
+            System.out.println(this);
         };
     }
 }

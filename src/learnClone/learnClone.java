@@ -15,7 +15,7 @@ public class learnClone {
 }
 
 class Employee implements Cloneable{
-    private String name;
+    private final String name;
     private double salary;
     private Date hireDay;
 

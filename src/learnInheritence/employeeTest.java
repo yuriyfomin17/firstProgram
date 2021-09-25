@@ -33,8 +33,8 @@ class Employee {
     /*instance fields*/
     private final String name;
     private double salary;
-    private  LocalDate hireDay;
-    private  Integer id;
+    private final LocalDate hireDay;
+    private final Integer id;
     /* say there are 1000 objects of Employee type class. But each of them has nextId = 1*/
     private static int nextId;
 

@@ -4,6 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class pidThread {
+    static Lock lock1 = new ReentrantLock();
     public static void main(String[] args) {
 //        code underneath shows that threads have their own hierarchy
         Thread currentThread = Thread.currentThread();
@@ -84,19 +85,31 @@ public class pidThread {
         Lock lock4 = new ReentrantLock();
         Runnable task4 = () -> {
             lock4.lock();
-            System.out.println("THREAD");
+            System.out.println("task4");
+//            lock4.unlock();
+        };
+
+        Runnable task5 = () -> {
+            lock4.lock();
+            System.out.println("task5");
             lock4.unlock();
         };
-        lock4.lock();
 
         Thread th4 = new Thread(task4);
         th4.start();
-        System.out.println("MAIN");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        lock4.unlock();
+
+        Thread th5 = new Thread(task5);
+        th5.start();
+//        lock4.lock();
+//
+//        Thread th4 = new Thread(task4);
+//        th4.start();
+//        System.out.println("MAIN");
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        lock4.unlock();
     }
 }

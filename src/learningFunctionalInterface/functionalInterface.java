@@ -39,7 +39,7 @@ public class functionalInterface {
 
 interface Divisible{
     boolean checkDivision(Integer num);
-};
+}
 
 interface StringLonger{
     String longerString(String s1, String s2);

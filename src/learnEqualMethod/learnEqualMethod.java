@@ -82,10 +82,6 @@ class Manager extends Employee{
         this.bonus = aBonus;
     }
     public boolean equals(Object otherObject){
-        if(!super.equals(otherObject)){
-            return false;
-        }else {
-            return true;
-        }
+        return super.equals(otherObject);
     }
 }
