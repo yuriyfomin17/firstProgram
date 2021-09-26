@@ -12,7 +12,7 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1122();
+        exe1113();
     }
 
     static public void exe111() {
@@ -99,16 +99,21 @@ public class Exercises {
 
     // transpose matrix
     static public void exe1113() {
-        int[][] matrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        int[][] matrix = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12}
+        };
         int rowLength = matrix[0].length;
         int columnLength = matrix.length;
         int[][] transposeMatrix = new int[rowLength][columnLength];
-        for (int i = 0; i < columnLength; i++) {
-            for (int j = 0; j < rowLength; j++) {
-                transposeMatrix[j][i] = matrix[i][j];
+        for (int r = 0; r < columnLength; r++) {
+            for (int c = 0; c < rowLength; c++) {
+                transposeMatrix[c][r] = matrix[r][c];
             }
         }
         System.out.println(Arrays.deepToString(transposeMatrix));
+
 
     }
 
