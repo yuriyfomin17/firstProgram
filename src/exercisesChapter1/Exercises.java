@@ -10,7 +10,7 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1115();
+        exe1119();
     }
 
     static public void exe111() {
@@ -35,10 +35,10 @@ public class Exercises {
     }
 
     static public void exe116() { // fibonacci sequence
-        int f = 0;
-        int g = 1;
-        for (int i = 0; i < 15; i++) {
-            StdOut.println(f);
+        long f = 0;
+        long g = 1;
+        for (int i = 0; i < 100; i++) {
+            StdOut.println(i + " " + f);
             f = f + g;
             g = f - g;
         }
@@ -94,6 +94,7 @@ public class Exercises {
         for (int i = 0; i < 10; i++)
             System.out.println(i);
     }
+
     // transpose matrix
     static public void exe1113() {
         int[][] matrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
@@ -109,7 +110,7 @@ public class Exercises {
 
     }
 
-    static public void exe1114(){
+    static public void exe1114() {
         // Write a static method lg() that takes an int
         // value N as argument and returns the largest int not larger than the base-2 logarithm of N. Do not use Math.
         int N = 8;
@@ -117,19 +118,55 @@ public class Exercises {
         while (accumulator * 4 <= N) accumulator += 1;
         System.out.println(accumulator);
     }
-    static public void exe1115(){
-        int[] array = { 0, 2, 3, 4, 2, 2 ,3};
+
+    static public void exe1115() {
+        int[] array = {0, 2, 3, 4, 2, 2, 3};
         int M = 5;
-        int [] result = new int[M];
+        int[] result = new int[M];
         HashMap<Integer, Integer> info = new HashMap();
-        for (int el: array) {
+        for (int el : array) {
             if (info.containsKey(el)) info.put(el, info.get(el) + 1);
             else info.put(el, 1);
         }
-        for (Map.Entry<Integer, Integer> entry: info.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : info.entrySet()) {
             if (entry.getKey() < result.length) result[entry.getKey()] = entry.getValue();
         }
         System.out.println(Arrays.toString(result));
-//        System.out.println(Arrays.deepToString(result));
     }
+
+    public static String exe1116(int n) { // 311361142246
+        if (n <= 0) {
+            return "";
+        }
+        return exe1116(n - 3) + n + exe1116(n - 2) + n;
+    }
+
+    // a, b - 2, 25 => 50; a,b - 3, 11 => 33
+    // given pos integers exe1118 multiplies a * b
+    public static int exe1118(int a, int b) {
+        if (b == 0) return 0;
+        if (b % 2 == 0) return exe1118(a + a, b / 2);
+        return exe1118(a + a, b / 2) + a;
+    }
+
+    public static void exe1119() {
+        // largest n for which it takes less then hour to compute fibonacci is 49
+        class Fibonacci {
+            public static long F(int N, HashMap<Integer, Long> info) {
+                if (N == 0) return 0;
+                if (N == 1) return 1;
+                if (info.containsKey(N)) return info.get(N);
+                long result =  F(N - 1, info) + F(N - 2, info);
+                info.put(N, result);
+                return result;
+            }
+        }
+        for (int N = 0; N < 100; N++){
+            long result = Fibonacci.F(N, new HashMap<>());
+            StdOut.println(N + " " + result);
+        }
+
+    }
+
+
 }
