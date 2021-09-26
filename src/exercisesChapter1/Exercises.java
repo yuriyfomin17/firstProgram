@@ -4,11 +4,13 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1113();
+        exe1115();
     }
 
     static public void exe111() {
@@ -105,5 +107,29 @@ public class Exercises {
         }
         System.out.println(Arrays.deepToString(transposeMatrix));
 
+    }
+
+    static public void exe1114(){
+        // Write a static method lg() that takes an int
+        // value N as argument and returns the largest int not larger than the base-2 logarithm of N. Do not use Math.
+        int N = 8;
+        int accumulator = 1;
+        while (accumulator * 4 <= N) accumulator += 1;
+        System.out.println(accumulator);
+    }
+    static public void exe1115(){
+        int[] array = { 0, 2, 3, 4, 2, 2 ,3};
+        int M = 5;
+        int [] result = new int[M];
+        HashMap<Integer, Integer> info = new HashMap();
+        for (int el: array) {
+            if (info.containsKey(el)) info.put(el, info.get(el) + 1);
+            else info.put(el, 1);
+        }
+        for (Map.Entry<Integer, Integer> entry: info.entrySet()) {
+            if (entry.getKey() < result.length) result[entry.getKey()] = entry.getValue();
+        }
+        System.out.println(Arrays.toString(result));
+//        System.out.println(Arrays.deepToString(result));
     }
 }
