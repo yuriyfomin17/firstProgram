@@ -10,7 +10,7 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1119();
+        exe1120();
     }
 
     static public void exe111() {
@@ -151,6 +151,7 @@ public class Exercises {
 
     public static void exe1119() {
         // largest n for which it takes less then hour to compute fibonacci is 49
+        // enhanced with memoization
         class Fibonacci {
             public static long F(int N, HashMap<Integer, Long> info) {
                 if (N == 0) return 0;
@@ -167,6 +168,18 @@ public class Exercises {
         }
 
     }
-
+    public static void exe1120(){
+        // calculate ln(N!) enhanced by memoization. However, doesn't need it , since recursion calls just one recursive fucntion
+        class Factorial{
+            public static long F(int N, HashMap<Integer, Long> info){
+                if (N == 0) return 1;
+                if (info.containsKey(N)) return info.get(N);
+                long result =  N * F(N -1, info);
+                info.put(N, result);
+                return result;
+            }
+        }
+        System.out.println(Math.log(Factorial.F(10, new HashMap<>())));
+    }
 
 }
