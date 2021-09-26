@@ -94,7 +94,7 @@ public class Exercises {
     }
     // transpose matrix
     static public void exe1113() {
-        int[][] matrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+        int[][] matrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
         int rowLength = matrix[0].length;
         int columnLength = matrix.length;
         int[][] transposeMatrix = new int[rowLength][columnLength];
