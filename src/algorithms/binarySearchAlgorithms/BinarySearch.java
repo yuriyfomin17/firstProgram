@@ -8,11 +8,16 @@ import java.util.Arrays;
 
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] whitelist = In.readInts(args[0]);
+        Boolean printInWhiteList = args[0].equals("+");
+        int[] whitelist = In.readInts(args[1]);
         Arrays.sort(whitelist);
         while (!StdIn.isEmpty()){
             int target = StdIn.readInt();
-            if (rank(whitelist, target) == -1){
+            int index = rank(whitelist, target);
+            if ( printInWhiteList && index  == -1){
+                StdOut.println(target);
+            }
+            if (!printInWhiteList && index!= -1){
                 StdOut.println(target);
             }
         }
