@@ -11,8 +11,8 @@ public class matrixMultiplicator {
     }
 
     public static void dotProduct(int[][] arr1, int[][] arr2, int[][] arr3) {
-        int rowLength = arr1.length;
-        int colLength = arr2[0].length;
+        int rowLength = arr1[0].length;
+        int colLength = arr2.length;
         if (rowLength != colLength) return;
         for (int r = 0; r < rowLength; r++) {
             for (int c = 0; c < colLength; c++) {
