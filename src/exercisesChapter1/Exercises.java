@@ -12,7 +12,7 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1121();
+        exe1122();
     }
 
     static public void exe111() {
@@ -202,6 +202,22 @@ public class Exercises {
             StdOut.printf("| %s | %d | %d | %f |\n", name, num1, num2 , num3 );
         }
         System.out.println("----------------------------");
+    }
+
+    public static void exe1122(){
+        int [] arr = {1, 2, 3, 4, 5, 6,7, 8, 9};
+        class RecursiveBinarySearch{
+            public static int search(int[]arr , int lo, int hi, int target, int depth){
+                int mid = lo + (hi - lo) / 2;
+                System.out.printf("lo %d, hi %d, depth %d\n", lo, hi, depth);
+                depth+=1;
+                if (arr[mid] == target) return mid;
+                if (arr[mid] < target) return search(arr, mid + 1, hi, target, depth);
+                if (arr[mid] > target) return search(arr, lo, mid - 1, target, depth);
+                return -1;
+            }
+        }
+        System.out.println(RecursiveBinarySearch.search(arr, 0, arr.length -1, 9, 0));
     }
 
 }
