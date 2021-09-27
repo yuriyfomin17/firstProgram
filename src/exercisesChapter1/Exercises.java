@@ -12,7 +12,7 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1120();
+        exe1124();
     }
 
     static public void exe111() { // ✅ checked
@@ -195,7 +195,7 @@ public class Exercises {
         }
 
     }
-    public static void exe1120(){
+    public static void exe1120(){ // ✅ checked
         // calculate ln(N!) enhanced by memoization. However, doesn't need it , since recursion calls just one recursive fucntion
         class Factorial{
             public static long F(int N, long[] info){
@@ -208,7 +208,7 @@ public class Exercises {
         }
         System.out.println(Math.log(Factorial.F(5, new long[5])));
     }
-    public static void exe1121(){
+    public static void exe1121(){ // ✅ checked
         // simple printer program
         // each line contain- ing a name and two integers and then uses printf() to print a table with a column of the names, the integers, and the result of dividing the first by the second, accurate to three decimal places.
         // You could use a program like this to tabulate batting averages for baseball players or grades for students.
@@ -229,7 +229,7 @@ public class Exercises {
         System.out.println("----------------------------");
     }
 
-    public static void exe1122(){
+    public static void exe1122(){ // ✅ checked
         int [] arr = {1, 2, 3, 4, 5, 6,7, 8, 9};
         class RecursiveBinarySearch{
             public static int search(int[]arr , int lo, int hi, int target, int depth){
@@ -245,7 +245,7 @@ public class Exercises {
         System.out.println(RecursiveBinarySearch.search(arr, 0, arr.length -1, 9, 0));
     }
 
-    public static void exe1124(){
+    public static void exe1124(){ // ✅ checked
         class EuclidGreatestCommonDivisor{
             public static int gcd(int num, int divisor){
                 System.out.printf("Numerator=%d, denominator=%d\n", num, divisor);

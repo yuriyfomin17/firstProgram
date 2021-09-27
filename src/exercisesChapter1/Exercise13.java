@@ -1,39 +1,43 @@
 package exercisesChapter1;
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 public class Exercise13 {
+    // Parameters example:
+    // Rene 2 1
+    // Bacon 4 3
+    // Abcdef 6 2
+    // Parameters example: 90 20
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4};
+//        int gcd = gcd(105, 24);
+//
+//        StdOut.println("GDC 1: " + gcd);
+//
+//        StdOut.println();
+//
+//        int argument1 = Integer.parseInt(args[0]);
+//        int argument2 = Integer.parseInt(args[1]);
+//
+//        int gc2 = gcd(argument1, argument2);
+//        StdOut.println("GDC 2: " + gc2);
+//
+//        StdOut.println();
 
-        int[] newArrA = histogram(a, 5);
+        int gcd3 = gcd(1111111, 1234567);
 
-        int[] b = {1, 2, 3, 9};
-
-        int[] newArrB = histogram(b, 7);
-
-        for (int i = 0; i < newArrA.length; i++) {
-            StdOut.print(newArrA[i] + " ");
-        }
-        StdOut.println("\nExpected: 0 1 1 1 1");
-
-        StdOut.println();
-
-        for (int i = 0; i < newArrB.length; i++) {
-            StdOut.print(newArrB[i] + " ");
-        }
-        StdOut.println("\nExpected: 0 1 1 1 0 0 0");
+        StdOut.println("GDC 3: " + gcd3);
     }
 
-    private static int[] histogram(int[] a, int m) {
-        int[] newArr = new int[m];
+    private static int gcd(int p, int q) {
 
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] < m) {
-                newArr[a[i]]++;
-            }
+        StdOut.println("p: " + p + " - q: " + q);
+
+        if (q == 0) {
+            return p;
+        } else {
+            return gcd(q, p % q);
         }
-
-        return newArr;
     }
+
 }
