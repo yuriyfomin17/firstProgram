@@ -12,7 +12,7 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1114();
+        exe1115();
     }
 
     static public void exe111() { // ✅ checked
@@ -128,7 +128,7 @@ public class Exercises {
 
     }
 
-    static public void exe1114() {
+    static public void exe1114() { // ✅ checked
         // Write a static method lg() that takes an int
         // value N as argument and returns the largest int not larger than the base-2 logarithm of N. Do not use Math.
         // log2(N) = ln(N)/ln(2) = x
@@ -145,9 +145,9 @@ public class Exercises {
         System.out.println((powerOfTwoCount));
     }
 
-    static public void exe1115() {
-        int[] array = {0, 2, 3, 4, 2, 2, 3};
-        int M = 5;
+    static public void exe1115() { // ✅ checked
+        int[] array = {1, 2, 3, 9};
+        int M = 7;
         int[] result = new int[M];
         HashMap<Integer, Integer> info = new HashMap();
         for (int el : array) {
@@ -160,7 +160,7 @@ public class Exercises {
         System.out.println(Arrays.toString(result));
     }
 
-    public static String exe1116(int n) { // 311361142246
+    public static String exe1116(int n) { // ✅ checked -> 311361142246
         if (n <= 0) {
             return "";
         }
@@ -169,13 +169,14 @@ public class Exercises {
 
     // a, b - 2, 25 => 50; a,b - 3, 11 => 33
     // given pos integers exe1118 multiplies a * b
+    // mystery two computes A^B
     public static int exe1118(int a, int b) {
         if (b == 0) return 0;
         if (b % 2 == 0) return exe1118(a + a, b / 2);
         return exe1118(a + a, b / 2) + a;
     }
 
-    public static void exe1119() {
+    public static void exe1119() { // ✅ checked
         // largest n for which it takes less then hour to compute fibonacci is 49
         // enhanced with memoization
         class Fibonacci {
