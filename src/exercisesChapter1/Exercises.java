@@ -12,7 +12,7 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1113();
+        exe1124();
     }
 
     static public void exe111() {
@@ -223,6 +223,18 @@ public class Exercises {
             }
         }
         System.out.println(RecursiveBinarySearch.search(arr, 0, arr.length -1, 9, 0));
+    }
+
+    public static void exe1124(){
+        class EuclidGreatestCommonDivisor{
+            public static int gcd(int num, int divisor){
+                System.out.printf("Numerator=%d, denominator=%d\n", num, divisor);
+                if (num % divisor == 0) return divisor;
+                int remainder = num % divisor;
+                return gcd(divisor , remainder);
+            }
+        }
+        System.out.println(EuclidGreatestCommonDivisor.gcd(105, 24));
     }
 
 }
