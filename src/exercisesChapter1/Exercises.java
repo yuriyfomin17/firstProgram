@@ -12,7 +12,7 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1115();
+        exe1119();
     }
 
     static public void exe111() { // ✅ checked
@@ -180,17 +180,17 @@ public class Exercises {
         // largest n for which it takes less then hour to compute fibonacci is 49
         // enhanced with memoization
         class Fibonacci {
-            public static long F(int N, HashMap<Integer, Long> info) {
+            public static long F(int N, long[] info) {
                 if (N == 0) return 0;
                 if (N == 1) return 1;
-                if (info.containsKey(N)) return info.get(N);
+                if (info[N-1] != 0) return info[N-1];
                 long result =  F(N - 1, info) + F(N - 2, info);
-                info.put(N, result);
+                info[N-1] = result;
                 return result;
             }
         }
         for (int N = 0; N < 100; N++){
-            long result = Fibonacci.F(N, new HashMap<>());
+            long result = Fibonacci.F(N, new long[N]);
             StdOut.println(N + " " + result);
         }
 
