@@ -12,23 +12,23 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1124();
+        exe1113();
     }
 
-    static public void exe111() {
+    static public void exe111() { // ✅ checked
         System.out.println((0 + 15) / 2); // a 7 since converts it to int which truncates values
         System.out.println((2e-6 * 100000000.1)); // b 200.0000002 float
         System.out.println(true && false || true && true); // c boolean
     }
 
-    static public void exe112() {
+    static public void exe112() { // ✅ checked
         System.out.println((1 + 2.236) / 2); // a double 1.618
         System.out.println((1 + 2 + 3 + 4.0)); // b double 10.0
         System.out.println(4.1 >= 4); // c compares by converting 4 ro double
         System.out.println((1 + 2 + "3")); // d string "33"
     }
 
-    static public void exe113(String[] args) {
+    static public void exe113(String[] args) { // ✅ checked
         int num1 = Integer.parseInt(args[0]);
         int num2 = Integer.parseInt(args[1]);
         int num3 = Integer.parseInt(args[2]);
@@ -36,7 +36,7 @@ public class Exercises {
         else System.out.println("not equal");
     }
 
-    static public void exe116() { // fibonacci sequence
+    static public void exe116() { //  ✅ checked -> fibonacci sequence
         long f = 0;
         long g = 1;
         for (int i = 0; i < 100; i++) {
@@ -46,14 +46,14 @@ public class Exercises {
         }
     }
 
-    static public void exe117() {
-        // a
+    static public void exe117() { //  ✅ checked
+        //  Newtonian method to find square root of number => 3.00009
         double sqrtNum = 9.0;
         double c = sqrtNum;
         while (Math.abs(sqrtNum - c / sqrtNum) > 0.001) {
             sqrtNum = (sqrtNum + c / sqrtNum) * 0.5;
         }
-        StdOut.printf("%.5f\n", sqrtNum); // Newtonian method to find square root of number => 3.00009
+        StdOut.printf("%.5f\n", sqrtNum);
 
         // b
         int sum = 0;
@@ -76,7 +76,7 @@ public class Exercises {
         System.out.println((char) ('a' + 4)); // converts 'a' to 97 according to ascii table and add up 4 to 97 which is 101 then char converts 101 to 'e'
     }
 
-    static public void exe119() {
+    static public void exe119() { // ✅ checked -> implementation of toBinaryString method
         int num = 9;
         System.out.println(Integer.toBinaryString(num));
 
@@ -97,13 +97,24 @@ public class Exercises {
             System.out.println(i);
     }
 
-    // transpose matrix
-    static public void exe1113() {
+    static public void exe1113() { // ✅ checked -> transpose matrix
+        class Printer{
+            public static void print(int[][] mat) {
+                for (int i = 0; i < mat.length; i++) {
+                    for (int j = 0; j < mat[0].length; j++) {
+                        StdOut.print(mat[i][j] + " ");
+                    }
+                    StdOut.println();
+                }
+
+            }
+        }
         int[][] matrix = {
-            {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12}
+                {1, 2, 3},
+                {4, 5, 6}
         };
+        Printer.print(matrix);
+        System.out.println();
         int rowLength = matrix[0].length;
         int columnLength = matrix.length;
         int[][] transposeMatrix = new int[rowLength][columnLength];
@@ -112,7 +123,7 @@ public class Exercises {
                 transposeMatrix[c][r] = matrix[r][c];
             }
         }
-        System.out.println(Arrays.deepToString(transposeMatrix));
+        Printer.print(transposeMatrix);
 
 
     }
@@ -234,7 +245,7 @@ public class Exercises {
                 return gcd(divisor , remainder);
             }
         }
-        System.out.println(EuclidGreatestCommonDivisor.gcd(105, 24));
+        System.out.println(EuclidGreatestCommonDivisor.gcd(1234567, 1111111));
     }
 
 }
