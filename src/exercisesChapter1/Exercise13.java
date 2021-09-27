@@ -4,38 +4,20 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class Exercise13 {
     public static void main(String[] args) {
-        int[][] mat = {
-                {1, 2, 3},
-                {4, 5, 6}
-        };
-
-        transpose(mat);
-        StdOut.println("\nExpected:");
-        StdOut.println("1 4 \n" +
-                "2 5 \n" +
-                "3 6 ");
+        StdOut.print(lg(15));
+        StdOut.println("\nExpected: 3");
     }
 
-    private static void transpose(int[][] mat) {
+    private static int lg(int n) {
 
-        int[][] newMat = new int[mat[0].length][mat.length];
+        int logInt = 0;
 
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                newMat[j][i] = mat[i][j];
-            }
+        while (n > 0) {
+            logInt++;
+
+            n /= 2;
         }
 
-        print(newMat);
-    }
-
-    private static void print(int[][] mat) {
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                StdOut.print(mat[i][j] + " ");
-            }
-            StdOut.println();
-        }
-
+        return logInt - 1;
     }
 }
