@@ -12,7 +12,7 @@ import java.util.Map;
 public class Exercises {
 
     public static void main(String[] args) {
-        exe1119();
+        exe1120();
     }
 
     static public void exe111() { // ✅ checked
@@ -198,15 +198,15 @@ public class Exercises {
     public static void exe1120(){
         // calculate ln(N!) enhanced by memoization. However, doesn't need it , since recursion calls just one recursive fucntion
         class Factorial{
-            public static long F(int N, HashMap<Integer, Long> info){
+            public static long F(int N, long[] info){
                 if (N == 0) return 1;
-                if (info.containsKey(N)) return info.get(N);
+                if (info[N-1] != 0) return info[N-1];
                 long result =  N * F(N -1, info);
-                info.put(N, result);
+                info[N-1] = result;
                 return result;
             }
         }
-        System.out.println(Math.log(Factorial.F(10, new HashMap<>())));
+        System.out.println(Math.log(Factorial.F(5, new long[5])));
     }
     public static void exe1121(){
         // simple printer program
